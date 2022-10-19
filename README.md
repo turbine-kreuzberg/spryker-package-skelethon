@@ -1,78 +1,40 @@
 # Spryker Sentry
 
+<!--delete-->
+---
+This repo can be used to scaffold a Laravel package. Follow these steps to get started:
+
+1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
+2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files.
+3. Have fun creating your package.
+4. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
+---
+<!--/delete-->
+
 ## About the package
-This package enables [Sentry.io](https://sentry.io) to work with your [Spryker](https://spryker.com) shop by extending the Monitoring Module of Spryker and adding other hooks to here and there to enhance the data in Sentry.
+This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
 ### Features
-- Integration of [Sentry.io](https://sentry.io) with the Spryker [Monitoring Module](https://github.com/spryker/monitoring)
-- Possibility to ignore certain Exceptions with a configuration key
+- Enumerate the features of the package
 
 ## Installation
 ### Composer
-To get the latest version, simply require the package using [Composer](https://getcomposer.org):
+You can install the package via composer:
 
 ```bash
-composer require turbine-kreuzberg/spryker-sentry
+composer require :vendor_slug/:package_slug
 ```
 
 ### Configuration
-Add the `TurbineKreuzberg` namespace to the `PROJECT_NAMESPACES` in your `config/Shared/config_default.php` file and configure the Sentry DSN:
+Add the `VendorName` namespace to the `CORE_NAMESPACES` in your `config/Shared/config_default.php` file:
 
 ```php
-$config[KernelConstants::PROJECT_NAMESPACES] = [
-    'VendorName',
+$config[KernelConstants::CORE_NAMESPACES] = [
     // ...
-];
-
-$config[\TurbineKreuzberg\Shared\Sentry\SentryConstants::DSN] = '<your sentry DSN>';
-```
-
-Add the `SentryMonitoringExtensionPlugin` to `Pyz\Service\Monitoring\MonitoringDependencyProvider`:
-```php
-<?php
-
-namespace Pyz\Service\Monitoring;
-
-use Spryker\Service\Monitoring\MonitoringDependencyProvider as SprykerMonitoringDependencyProvider;
-use TurbineKreuzberg\Service\Sentry\Plugin\Monitoring\SentryMonitoringExtensionPlugin;
-
-class MonitoringDependencyProvider extends SprykerMonitoringDependencyProvider
-{
-    protected function getMonitoringExtensions(): array
-    {
-        return [
-            // ...
-            new SentryMonitoringExtensionPlugin(),
-            // ...
-        ];
-    }
-}
-```
-
-## Additional Configurations
-You can adjust some configurations on the sentry module by adding some of this lines to your config file (ex. config_default.php):
-```php
-// You can ignore certain exceptions by adding them to this array
-$config[SentryConstants::IGNORED_EXCEPTIONS] = [
-    ErrorException::class, // Example
-];
-
-// You can set your application version so that it gets reported to sentry
-$config[SentryConstants::APPLICATION_VERSION] = '1.0.0';
-
-// You can even get it from an env variable
-$config[SentryConstants::APPLICATION_VERSION] = getenv('MY_APP_VERSION');
-
-// You can set the percentage of your requests that are going to be traced for
-// performance monitoring, value goes from 0 to 1, being 0.2 = 20%
-$config[SentryConstants::TRACE_SAMPLE_RATE] = 0.4;
-
-// You can define custom serializers for complex objects like transfer objects
-// This will greatly enrich PackageName issues, making it possible to inspect object internal states across the backtrace
-// Note that you can use instances of classes that implement the __invoke method instead of a closure
-$config[SentryConstants::CLASS_SERIALIZERS] = [
-    Spryker\Shared\Kernel\Transfer\AbstractTransfer => function(Spryker\Shared\Kernel\Transfer\AbstractTransfer $data) {
-        return $data->toArray();
-    }
+    'VendorName',
 ];
 ```
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
