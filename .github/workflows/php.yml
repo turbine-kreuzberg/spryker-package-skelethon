@@ -29,13 +29,10 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
     - name: Run Code Sniffer (Style)
       run: composer run cs-check
 
-    - name: Run test suite
-      run: composer run test
+#    - name: Run test suite
+#      run: composer run test
 
 

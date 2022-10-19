@@ -204,6 +204,11 @@ foreach ($files as $file) {
         ':package_slug' => $packageSlug,
         ':package_slug_without_prefix' => $packageSlugWithoutPrefix,
     ]);
+
+    match (true) {
+        str_contains($file, 'README.md') => remove_readme_paragraphs($file),
+        default => [],
+    };
 }
 
 

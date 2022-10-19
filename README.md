@@ -1,4 +1,4 @@
-# Spryker Sentry
+# :package_description
 
 <!--delete-->
 ---

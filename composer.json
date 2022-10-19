@@ -29,9 +29,8 @@
         }
     },
     "require": {
-        "php": ">=7.3",
-        "spryker/kernel": "^3",
-        "spryker/monitoring": "^2"
+        "php": ">=8.0",
+        "spryker/kernel": "^3"
     },
     "require-dev": {
         "codeception/module-asserts": "^1.3",
