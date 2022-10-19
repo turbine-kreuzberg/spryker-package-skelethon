@@ -1,0 +1,59 @@
+{
+    "name": ":vendor_slug/:package_slug",
+    "description": ":package_description",
+    "keywords": [
+        ":vendor_name",
+        "spryker",
+        ":package_slug"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": ":author_name",
+            "email": "author@domain.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "VendorName\\": "src/VendorName/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "VendorNameTest\\": "tests/VendorNameTest/",
+            "Generated\\": "src/Generated/"
+        }
+    },
+    "require": {
+        "php": ">=7.3",
+        "spryker/kernel": "^3",
+        "spryker/monitoring": "^2"
+    },
+    "require-dev": {
+        "codeception/module-asserts": "^1.3",
+        "fond-of-codeception/spryker": "^1.2",
+        "spryker/code-sniffer": "^0.16.0",
+        "spryker/container": "*",
+        "spryker/testify": "*"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "test": "codecept run",
+        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/VendorName/ tests/",
+        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/VendorName/ tests/"
+    }
+}

@@ -1,0 +1,30 @@
+namespace: VendorName\Service\PackageName
+
+paths:
+  tests: .
+  data: ../../../_data
+  support: _support
+  log: ../../../_output
+
+coverage:
+  enabled: true
+  remote: false
+  whitelist: { include: ['../../../../src/*'] }
+
+suites:
+  Service:
+    path: .
+    class_name: PackageNameServiceTester
+    modules:
+      enabled:
+        - Asserts
+        - \SprykerTest\Shared\Testify\Helper\Environment
+        - \SprykerTest\Shared\Testify\Helper\ConfigHelper
+        - \SprykerTest\Shared\Testify\Helper\LocatorHelper
+        - \SprykerTest\Shared\Testify\Helper\DependencyHelper
+        - \FondOfCodeception\Module\Spryker
+      config:
+        \FondOfCodeception\Module\Spryker:
+          generate_transfer: true
+          generate_map_classes: false
+          generate_propel_classes: false
